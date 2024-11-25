@@ -48,8 +48,12 @@ public class Reserva {
 
     @PrePersist
     private void inicializarFechas() {
-        this.fechaReserva = LocalDateTime.now();
         this.ultimaActualizacion = LocalDateTime.now();
+        
+        // Si la fecha de reserva no está establecida, asignar el día siguiente
+        if (this.fechaReserva == null) {
+            this.fechaReserva = LocalDateTime.now().plusDays(1);
+        }
     }
 
     @PreUpdate
