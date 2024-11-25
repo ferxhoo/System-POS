@@ -28,10 +28,6 @@ public class ClienteController {
     @Autowired
     private ClienteService clienteService;
 
-    public ClienteController(ClienteService clienteService) {
-        this.clienteService = clienteService;
-    }
-
     @GetMapping
     public ResponseEntity<?> obtenerTodosLosClientes() {
         try {
