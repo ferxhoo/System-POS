@@ -11,28 +11,29 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import system.pos.backend.dto.UsuarioRolPermiso.PermisoDTO;
-import system.pos.backend.exception.ResourceNotFoundException;
-import system.pos.backend.service.Impl.PermisoServiceImpl;
+import system.pos.backend.service.Interfaces.PermisoService;
 
 @RestController
 @RequestMapping("/permisos")
 public class PermisoController {
 
     @Autowired
-    private PermisoServiceImpl permisoService;
+    private PermisoService permisoService;
 
     @GetMapping
     public ResponseEntity<?> listarTodosLosPermisos() {
-        try {
-            List<PermisoDTO> permisos = permisoService.listarTodosLosPermisos();
-            return ResponseEntity.ok(permisos);
-        } catch (ResourceNotFoundException e) {
-            return ResponseEntity.status(HttpStatus.NOT_FOUND).body(Map.of(
-                "error", "No se encontraron permisos",
-                "detalle", e.getMessage()
-            ));
+        List<PermisoDTO> permisos = permisoService.listarTodosLosPermisos();
+        if (permisos.isEmpty()) {
+            return generarRespuestaError(HttpStatus.NOT_FOUND, "No se encontraron permisos", "La lista de permisos está vacía");
         }
+        return ResponseEntity.ok(permisos);
+    }
+
+    private ResponseEntity<Map<String, String>> generarRespuestaError(HttpStatus status, String error, String detalle) {
+        return ResponseEntity.status(status).body(Map.of(
+                "error", error,
+                "detalle", detalle
+        ));
     }
 }
-
 
