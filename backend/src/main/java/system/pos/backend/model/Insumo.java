@@ -27,7 +27,7 @@ public class Insumo {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long idInsumo;
+    private Long id;
 
     @ManyToOne
     @JoinColumn(name = "idCategoria")
