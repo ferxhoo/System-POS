@@ -19,10 +19,10 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 @Data
+@Entity
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-@Entity
 @Table(name = "Productos")
 public class Producto {
 
@@ -34,13 +34,17 @@ public class Producto {
     @JoinColumn(name = "idCategoria", nullable = false)
     private Categoria categoria;
 
+    @Column(nullable = false)
     private String nombreProducto;
-    
-    @Column(precision = 19, scale = 2)
+
+    @Column(nullable = false)
+    private boolean inventariable;
+
+    @Column(precision = 19, scale = 2, nullable = false)
     private BigDecimal precioUnitario;
 
     @ManyToOne
-    @JoinColumn(name = "idImpuesto")
+    @JoinColumn(name = "idImpuesto", nullable = true)
     private Impuesto impuesto;
 
     @Column(columnDefinition = "TIMESTAMP DEFAULT CURRENT_TIMESTAMP", updatable = false)

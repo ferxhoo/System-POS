@@ -13,7 +13,8 @@ public class ProductoDTO {
     private Long idProducto;
     private CategoriaDTO categoria;
     private String nombreProducto;
-    private String precioUnitario;
+    private boolean inventariable;
+    private String precioUnitario; // Guardado como String para evitar problemas de precisión
     private ImpuestoDTO impuesto;
     private String fechaRegistro;
     private String ultimaActualizacion;
