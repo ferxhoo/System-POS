@@ -5,6 +5,7 @@ import org.springframework.stereotype.Component;
 
 import jakarta.annotation.PostConstruct;
 import system.pos.backend.service.Impl.PermisoServiceImpl;
+import system.pos.backend.service.Impl.RolServiceImpl;
 
 @Component
 public class DataInitializer {
@@ -12,9 +13,13 @@ public class DataInitializer {
     @Autowired
     private PermisoServiceImpl permisoService;
 
+    @Autowired
+    private RolServiceImpl rolService;
+
     @PostConstruct
     public void init() {
         permisoService.inicializarPermisosDefault();
+        rolService.inicializarRolsDefault();
     }
 
 }

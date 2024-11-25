@@ -10,17 +10,18 @@ import system.pos.backend.dto.UsuarioRolPermiso.PermisoDTO;
 import system.pos.backend.exception.ResourceNotFoundException;
 import system.pos.backend.mapper.MapperPermiso;
 import system.pos.backend.model.Permiso;
+import system.pos.backend.service.Interfaces.PermisoService;
 
 
 @Service
-public class PermisoServiceImpl {
+public class PermisoServiceImpl implements PermisoService {
 
     private static final String PERMISO_NO_ENCONTRADO = "No se encontraron permisos registrados";
 
     @Autowired
     private PermisoRepository permisoRepository;
 
-    
+    @Override
     public void inicializarPermisosDefault() {
         List<Permiso> permisosPorDefecto = crearListaDePermisosDefault();
         permisosPorDefecto.forEach(this::guardarPermisoSiNoExiste);
@@ -52,6 +53,7 @@ public class PermisoServiceImpl {
         }
     }
 
+    @Override
     public List<PermisoDTO> listarTodosLosPermisos() {
         List<Permiso> permisos = permisoRepository.findAll();
         if (permisos.isEmpty()) {

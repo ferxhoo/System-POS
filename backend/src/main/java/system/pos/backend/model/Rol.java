@@ -1,7 +1,8 @@
 package system.pos.backend.model;
 
 import java.time.LocalDateTime;
-import java.util.Set;
+import java.util.ArrayList;
+import java.util.List;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -34,13 +35,14 @@ public class Rol {
     @Column(nullable = false, unique = true)
     private String nombreRol;
 
+    @Builder.Default
     @ManyToMany
     @JoinTable(
         name = "rol_permiso",
         joinColumns = @JoinColumn(name = "rol_id"),
         inverseJoinColumns = @JoinColumn(name = "permiso_id")
     )
-    private Set<Permiso> permisos;
+    private List<Permiso> permisos = new ArrayList<>();
 
     @Column(columnDefinition = "TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP")
     private LocalDateTime fechaCreacion;
