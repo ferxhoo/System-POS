@@ -1,22 +1,16 @@
 package system.pos.backend.dto.Facturacion;
 
-import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
-import lombok.NoArgsConstructor;
 import system.pos.backend.dto.Inventario.InsumoDTO;
 
 @Data
 @Builder
-@NoArgsConstructor
-@AllArgsConstructor
 public class DetalleCompraDTO {
-    private Long idDetalleCompra;
-    private CompraDTO compra;
-    private InsumoDTO insumo;
-    private Integer cantidad;
-    private String precioUnitario;
-    private String subtotal;  
-    private String fechaRegistro;  
-    private String ultimaActualizacion;  
+    private Long idDetalle;
+    private Long idCompra; // Solo se necesita el ID de la compra, no todo el objeto
+    private InsumoDTO insumo; // Referencia al DTO de Insumo
+    private Integer cantidadComprada;
+    private Double precioUnitario;
+    private Double subtotal;
 }

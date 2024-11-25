@@ -1,9 +1,7 @@
 package system.pos.backend.model;
 
-import java.math.BigDecimal;
 import java.time.LocalDateTime;
 
-import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -17,35 +15,35 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import jakarta.persistence.*;
+import java.util.List;
+
 @Data
-@Entity
 @Builder
-@AllArgsConstructor
 @NoArgsConstructor
-@Table(name = "Compras")
+@AllArgsConstructor
+@Entity
+@Table(name = "compras")
 public class Compra {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long idCompra;
 
-    private String numeroDocumento;
-
-    private LocalDateTime fechaCompra;
-
-    @ManyToOne
-    @JoinColumn(name = "idUsuario")
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "id_usuario", nullable = false)
     private Usuario usuario;
 
-    @ManyToOne
-    @JoinColumn(name = "idProveedor")
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "id_proveedor", nullable = false)
     private Proveedor proveedor;
 
-    @Column(precision = 19, scale = 2)
-    private BigDecimal valorTotal;
+    @OneToMany(mappedBy = "compra", cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<DetalleCompra> detalles;
 
-    @ManyToOne
-    @JoinColumn(name = "idFormaPago")
-    private FormaPago formaPago;
+    private Double totalCompra;
+
+    private LocalDateTime fechaCompra;
 
     @PrePersist
     private void inicializarFechaVenta() {
@@ -53,5 +51,4 @@ public class Compra {
             this.fechaCompra = LocalDateTime.now();
         }
     }
-
 }
