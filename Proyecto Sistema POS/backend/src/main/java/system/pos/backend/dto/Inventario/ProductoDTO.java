@@ -14,7 +14,7 @@ public class ProductoDTO {
     private CategoriaDTO categoria;
     private String nombreProducto;
     private boolean inventariable;
-    private String precioUnitario; // Guardado como String para evitar problemas de precisión
+    private String precioUnitario; 
     private ImpuestoDTO impuesto;
     private String fechaRegistro;
     private String ultimaActualizacion;
