@@ -62,7 +62,7 @@ public class UsuarioServiceImpl implements UsuarioService {
                 .username(usuarioDTO.getUsername())
                 .email(usuarioDTO.getEmail())
                 .telefono(usuarioDTO.getTelefono())
-                .password("hashedPassword") // Cambiar por la implementación de hashing de contraseñas
+                .password("hashedPassword")
                 .rol(rol)
                 .build();
 

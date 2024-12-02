@@ -20,6 +20,7 @@ import system.pos.backend.dto.Inventario.ImpuestoDTO;
 import system.pos.backend.exception.ConflictException;
 import system.pos.backend.exception.ResourceNotFoundException;
 import system.pos.backend.service.Interfaces.ImpuestoService;
+
 @RestController
 @RequestMapping("/impuestos")
 public class ImpuestoController {

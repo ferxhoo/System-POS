@@ -28,16 +28,16 @@ public class ImpuestoServiceImpl implements ImpuestoService {
     @Transactional
     public void inicializarImpuestosDefeault() {
         List<Impuesto> impuestosPorDefecto = List.of(
-            Impuesto.builder().nombreImpuesto("IVA").concepto("Tarifas del 0%").tarifa(new BigDecimal("0.00")).build(),
-            Impuesto.builder().nombreImpuesto("IVA").concepto("Tarifas del 5%").tarifa(new BigDecimal("0.05")).build(),
-            Impuesto.builder().nombreImpuesto("IVA").concepto("Tarifas del 16%").tarifa(new BigDecimal("0.16")).build(),
-            Impuesto.builder().nombreImpuesto("IVA").concepto("Tarifas del 19%").tarifa(new BigDecimal("0.19")).build(),
-            Impuesto.builder().nombreImpuesto("INC").concepto("Tarifas del 2%").tarifa(new BigDecimal("0.02")).build(),
-            Impuesto.builder().nombreImpuesto("INC").concepto("Tarifas del 4%").tarifa(new BigDecimal("0.04")).build(),
-            Impuesto.builder().nombreImpuesto("INC").concepto("Tarifas del 8%").tarifa(new BigDecimal("0.08")).build(),
-            Impuesto.builder().nombreImpuesto("INC").concepto("Tarifas del 16%").tarifa(new BigDecimal("0.16")).build(),
-            Impuesto.builder().nombreImpuesto("ICUI").concepto("Tarifas del 10%").tarifa(new BigDecimal("0.10")).build(),
-            Impuesto.builder().nombreImpuesto("ICUI").concepto("Tarifas del 15%").tarifa(new BigDecimal("0.15")).build()
+            Impuesto.builder().nombreImpuesto("IVA").concepto("Excento 0%").tarifa(new BigDecimal("0.00")).build(),
+            Impuesto.builder().nombreImpuesto("IVA").concepto("Tarifas 5%").tarifa(new BigDecimal("0.05")).build(),
+            Impuesto.builder().nombreImpuesto("IVA").concepto("Tarifas 16%").tarifa(new BigDecimal("0.16")).build(),
+            Impuesto.builder().nombreImpuesto("IVA").concepto("Tarifas 19%").tarifa(new BigDecimal("0.19")).build(),
+            Impuesto.builder().nombreImpuesto("INC").concepto("Tarifas 2%").tarifa(new BigDecimal("0.02")).build(),
+            Impuesto.builder().nombreImpuesto("INC").concepto("Tarifas 4%").tarifa(new BigDecimal("0.04")).build(),
+            Impuesto.builder().nombreImpuesto("INC").concepto("Tarifas 8%").tarifa(new BigDecimal("0.08")).build(),
+            Impuesto.builder().nombreImpuesto("INC").concepto("Tarifas 16%").tarifa(new BigDecimal("0.16")).build(),
+            Impuesto.builder().nombreImpuesto("ICUI").concepto("Tarifas 10%").tarifa(new BigDecimal("0.10")).build(),
+            Impuesto.builder().nombreImpuesto("ICUI").concepto("Tarifas 15%").tarifa(new BigDecimal("0.15")).build()
         );
 
         impuestosPorDefecto.forEach(impuesto -> {
